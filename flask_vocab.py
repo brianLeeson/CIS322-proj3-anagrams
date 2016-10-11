@@ -86,7 +86,6 @@ def check():
   text = request.args.get("text", type=str)
   
   ## The data we need, from form and from cookie
-  # text = request.form["attempt"]
   jumble = flask.session["jumble"]
   matches = flask.session.get("matches", []) # Default to empty list
 
@@ -99,6 +98,7 @@ def check():
     matches.append(text)
     flask.session["matches"] = matches
     if len(matches) >= flask.session["target_count"]:
+	  print("In redirect code block. Should redirect.")
       return flask.redirect(url_for("success"))    
     rslt = { "key": text }
     return jsonify(result=rslt)
