@@ -95,14 +95,14 @@ def check():
 
   ## Respond appropriately 
   if matched and in_jumble and not (text in matches):
-    matches.append(text)
-    flask.session["matches"] = matches
-    if len(matches) >= flask.session["target_count"]:
-	  print("In redirect code block. Should redirect.")
-      return flask.redirect(url_for("success"))    
-    rslt = { "key": text }
-    return jsonify(result=rslt)
-    
+	matches.append(text)
+	flask.session["matches"] = matches
+	if len(matches) >= flask.session["target_count"]:
+		print("In redirect code block. Should redirect.")
+		return flask.redirect(url_for("success"))	
+	rslt = { "key": text }
+	return jsonify(result=rslt)
+	
 ###############
 # AJAX request handlers 
 #   These return JSON, rather than rendering pages. 
@@ -124,11 +124,11 @@ def example():
 
 @app.template_filter( 'filt' )
 def format_filt( something ):
-    """
-    Example of a filter that can be used within
-    the Jinja2 code
-    """
-    return "Not what you asked for"
+	"""
+	Example of a filter that can be used within
+	the Jinja2 code
+	"""
+	return "Not what you asked for"
   
 ###################
 #   Error handlers
@@ -158,15 +158,15 @@ def error_403(e):
 #
 
 if __name__ == "__main__":
-    # Standalone. 
-    app.debug = True
-    app.logger.setLevel(logging.DEBUG)
-    print("Opening for global access on port {}".format(CONFIG.PORT))
-    app.run(port=CONFIG.PORT, host="0.0.0.0")
+	# Standalone. 
+	app.debug = True
+	app.logger.setLevel(logging.DEBUG)
+	print("Opening for global access on port {}".format(CONFIG.PORT))
+	app.run(port=CONFIG.PORT, host="0.0.0.0")
 else:
-    # Running from cgi-bin or from gunicorn WSGI server, 
-    # which makes the call to app.run.  Gunicorn may invoke more than
-    # one instance for concurrent service.
-    #FIXME:  Debug cgi interface 
-    app.debug=False
+	# Running from cgi-bin or from gunicorn WSGI server, 
+	# which makes the call to app.run.  Gunicorn may invoke more than
+	# one instance for concurrent service.
+	#FIXME:  Debug cgi interface 
+	app.debug=False
 
