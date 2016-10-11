@@ -89,7 +89,6 @@
 </div></div>
 
 <p id="response"> </p>  <!-- JavaScript will insert text here -->
-<p id="tiles"> </p> <!-- Illustration of inserting graphics into page -->
 
 <script>
 
@@ -113,8 +112,8 @@ $("#attempt").keyup(function(event) {
    var txt = $("#attempt").val();  // Current content of the input field
    
    // Below not needed unless going to extra credit.
-   // var keycode = event.which;      // The key that just went up
-   // var letter = String.fromCharCode(keycode);
+   var keycode = event.which;      // The key that just went up
+   var letter = String.fromCharCode(keycode);
 
    // That letter might not be a letter ... it could be the
    // the backspace key, or even the shift key, because 'keyup'
@@ -123,7 +122,7 @@ $("#attempt").keyup(function(event) {
    // so ignoring the shift key we get only the upper case letters.
 
    //don't need to check to see if 'letter' is a-z
-   //if (! "ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(letter)) { return }
+   if (! "ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(letter)) { return }
 
    $.getJSON( "/_check", { text: txt }, 
               function(data) {
