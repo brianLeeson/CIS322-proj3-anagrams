@@ -29,7 +29,7 @@ def index():
   return flask.render_template('minijax.html')
 
 ###############
-# AJAX request handlers 
+#   AJAX request handlers 
 #   These return JSON to the JavaScript function on
 #   an existing page, rather than rendering a new page. 
 ###############

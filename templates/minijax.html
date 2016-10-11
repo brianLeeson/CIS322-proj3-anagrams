@@ -65,7 +65,7 @@
 // Suppress normal form submission
 $("#entry").submit( function(event) {
    event.preventDefault();
-  });
+});
 
 // On each keystroke, ask the server whether the current 
 // word is long enough. 
@@ -97,7 +97,8 @@ $("#attempt").keyup(function(event) {
                 if (rsval) {
                    $("#response").html("That's enough!");
                    $("#attempt").val("");
-                } else {
+                } 
+				else {
                    $("#response").append(txt.length + " "); 
                 }
                 showTiles(txt);

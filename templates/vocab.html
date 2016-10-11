@@ -84,9 +84,19 @@
     <label for="attempt">Word:</label>
     <input id="attempt" name="attempt" type="text" width="15"
       autocomplete="off"  autofocus />
-    <input type="submit" name="try" />
+    <!-- <input type="submit" name="try" /> Removes the Submit button -->
   </form>
 </div></div>
+
+<script>
+
+// Suppress normal form submission
+$("#entry").submit( function(event) {
+   event.preventDefault();
+  });
+  
+  
+</script>
 
 <br />
 
