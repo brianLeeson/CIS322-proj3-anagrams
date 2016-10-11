@@ -98,11 +98,11 @@ def check():
   if matched and in_jumble and not (text in matches):
     matches.append(text)
     flask.session["matches"] = matches
-	if len(matches) >= flask.session["target_count"]:
-      return flask.redirect(url_for("success"))	
-	rslt = { "key": text }
+    if len(matches) >= flask.session["target_count"]:
+      return flask.redirect(url_for("success"))    
+    rslt = { "key": text }
     return jsonify(result=rslt)
-	
+    
 ###############
 # AJAX request handlers 
 #   These return JSON, rather than rendering pages. 
