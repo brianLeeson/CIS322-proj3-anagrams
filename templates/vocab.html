@@ -128,7 +128,7 @@ $("#attempt").keyup(function(event) {
               function(data) {
                 word = data.result.key;
                 console.log("word: " + word)
-				if (word = '#'){
+				if (word == '#'){
                   window.location.replace("/success");}
 			    else if ( word != '' ){
                   $("#response").append(word);
