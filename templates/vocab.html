@@ -126,11 +126,13 @@ $("#attempt").keyup(function(event) {
 
    $.getJSON( "/_check", { text: txt }, 
               function(data) {
-                word = data.result.key;
-                console.log("word: " + word)
-                $("#response").append(word + " ");
-                $("#attempt").val("");
-                }
+			  if (true){window.location.href = "http://www.google.com";}
+			  
+              word = data.result.key;
+              console.log("word: " + word)
+              $("#response").append(word + " ");
+              $("#attempt").val("");
+              }
            );
    });
   
