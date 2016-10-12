@@ -83,16 +83,15 @@ def check():
   in_jumble = LetterBag(jumble).contains(text)
   matched = WORDS.has(text)
 
-  
   rslt = { "key" : '' }
   ## Respond appropriately 
   if matched and in_jumble and not (text in matches):
     matches.append(text)
     flask.session["matches"] = matches
     if len(matches) >= flask.session["target_count"]:
-      rslt['key'] = '#' #Flag if we've completed 3 words
+      rslt['key'] = '#' #Send flag if we've completed 3 words
     else:
-      rslt['key'] = text + ' '
+      rslt['key'] = text + ' ' #Send word if we haven't found enough words
   return jsonify(result = rslt)
   
 ###################
