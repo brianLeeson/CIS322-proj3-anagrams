@@ -100,10 +100,11 @@ def check():
     if len(matches) >= flask.session["target_count"]:
       print("In redirect code block. Should redirect.")
       #return flask.redirect(url_for("success"))
-      rslt = { "key": 'done' }
+      rslt = { "key": text }
       return jsonify(result=rslt)
-    rslt = { "key": text }
+    rslt = { "key": text + ' ' }
     return jsonify(result=rslt)
+  return jsonify({ "key": '' })
     
 ###############
 # AJAX request handlers 
