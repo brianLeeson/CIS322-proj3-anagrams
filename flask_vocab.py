@@ -91,7 +91,7 @@ def check():
     flask.session["matches"] = matches
     if len(matches) >= flask.session["target_count"]:
       rslt['key'] = '#' #Flag if we've completed 3 words
-	else:
+    else:
 	  rslt['key'] = text + ' '
   return jsonify(result = rslt)
   
