@@ -104,7 +104,7 @@ def check():
       return jsonify(result=rslt)
     rslt = { "key": text + ' ' }
     return jsonify(result=rslt)
-  return jsonify({ "key": '' })
+  return jsonify(result = { "key": '' })
     
 ###############
 # AJAX request handlers 
