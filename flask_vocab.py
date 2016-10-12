@@ -47,19 +47,9 @@ def index():
   app.logger.debug("Session variables have been set")
   assert flask.session["matches"] == [ ]
   assert flask.session["target_count"] > 0
+  
   app.logger.debug("At least one seems to be set correctly")
   return flask.render_template('vocab.html')
-
-''' Maybe not needed
-@app.route("/keep_going")
-def keep_going():
-  """
-  After initial use of index, we keep the same scrambled
-  word and try to get more matches
-  """
-  flask.g.vocab = WORDS.as_list();
-  return flask.render_template('vocab.html')
-'''
 
 @app.route("/success")
 def success():
@@ -93,45 +83,16 @@ def check():
   in_jumble = LetterBag(jumble).contains(text)
   matched = WORDS.has(text)
 
+  
+  rslt = { "key" : '' }
   ## Respond appropriately 
   if matched and in_jumble and not (text in matches):
     matches.append(text)
     flask.session["matches"] = matches
     if len(matches) >= flask.session["target_count"]:
-      print("In redirect code block. Should redirect.")
-      #return flask.redirect(url_for("success"))
-      rslt = { "key": '#' } #Flag if we've completed 3 words
-      return jsonify(result=rslt)
-    rslt = { "key": text + ' ' }
-    return jsonify(result=rslt)
-  return jsonify(result = { "key": '' })
-    
-###############
-# AJAX request handlers 
-#   These return JSON, rather than rendering pages. 
-###############
-
-@app.route("/_example")
-def example():
-  """
-  Example ajax request handler
-  """
-  app.logger.debug("Got a JSON request");
-  rslt = { "key": "value" }
-  return jsonify(result=rslt)
-
-
-#################
-# Functions used within the templates
-#################
-
-@app.template_filter( 'filt' )
-def format_filt( something ):
-    """
-    Example of a filter that can be used within
-    the Jinja2 code
-    """
-    return "Not what you asked for"
+      rslt['key'] = '#' #Flag if we've completed 3 words
+    rslt['key'] = text + ' '
+  return jsonify(result = rslt)
   
 ###################
 #   Error handlers
@@ -139,18 +100,18 @@ def format_filt( something ):
 @app.errorhandler(404)
 def error_404(e):
   app.logger.warning("++ 404 error: {}".format(e))
-  return render_template('404.html'), 404
+  return flask.render_template('404.html'), 404
 
 @app.errorhandler(500)
 def error_500(e):
    app.logger.warning("++ 500 error: {}".format(e))
    assert app.debug == False #  I want to invoke the debugger
-   return render_template('500.html'), 500
+   return flask.render_template('500.html'), 500
 
 @app.errorhandler(403)
 def error_403(e):
   app.logger.warning("++ 403 error: {}".format(e))
-  return render_template('403.html'), 403
+  return flask.render_template('403.html'), 403
 
 
 
