@@ -126,6 +126,7 @@ $("#attempt").keyup(function(event) {
 
    $.getJSON( "/_check", { text: txt }, 
               function(data) {
+			    window.location.replace("/success");
                 word = data.result.key;
                 console.log("word: " + word)
 			    if ( word != '' ){
