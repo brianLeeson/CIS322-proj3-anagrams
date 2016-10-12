@@ -100,7 +100,7 @@ def check():
     if len(matches) >= flask.session["target_count"]:
       print("In redirect code block. Should redirect.")
       #return flask.redirect(url_for("success")) 
-      return jsonify(key = 'done'))
+      return jsonify(key = 'done')
     rslt = { "key": text }
     return jsonify(result=rslt)
     
