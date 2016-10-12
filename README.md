@@ -1,7 +1,6 @@
 # proj3-anagrams
 Vocabularly anagrams game for primary school English language learners
-Brian Leeson
-
+AUTHOR: Brian Leeson, bel@cs.uoregon.edu
 
 ## Overview
 
@@ -14,31 +13,30 @@ jumble.  When a matching word is typed, it is added to a list of solved words.
 
 The vocabulary word list is fixed for one invocation of the server, so multiple
 students connected to the same server will see the same vocabulary list but may 
-have different anagrams.
+have different anagrams. 
 
-## Authors 
+RUNNING THE APPLICATION
+Do NOT enter the virtual enviroment.
 
-Initial version by M Young; to be revised by CIS 322 students. 
+Deployment should work "out of the box" with this command sequence:
+sudo apt-get install python3-venv
+git clone <gitURL>
+cd to the cloned repository
+make configure
+make run
 
-## Status
+The default port is 5000. If your are on your own machine connect at localhost:5000. 
+If the server is running another machine connect at <OtherMachineIP>:5000.
+ 
+TESTING THE APPLICAITON
+Test this server by following the RUNNING instructions and attempt to connect to the server.
 
-flask_vocab.py and the template vocab.html are a 'skeleton' version 
-of the anagram game for a CIS 322 project.  They uses conventional  
-interaction through a form, interacting only when the user submits the form. 
-Your assignment is to replace the interaction with AJAX interaction on each 
-keystroke. 
+## To run automated tests, go into the virtual enviroment. 
+From inside /proj3-anagrams:
+. /env/bin/activate
+nosetests
 
-## Minijax? 
-
-flask_minijax.py and templates/minijax.html are a tiny example of using JQuery 
-with flask for an Ajax application.  They should not be included in the
-version of the project you turn in. 
-
-
-## To run automated tests 
-* `nosetests`
+To exit:
+deactivate
 
 There are currently nose tests for vocab.py, letterbag.py, and jumble.py. 
-
-
-
