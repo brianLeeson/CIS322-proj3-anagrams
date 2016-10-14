@@ -15,7 +15,7 @@ The vocabulary word list is fixed for one invocation of the server, so multiple
 students connected to the same server will see the same vocabulary list but may 
 have different anagrams. 
 
-RUNNING THE APPLICATION
+## RUNNING THE APPLICATION
 Do NOT enter the virtual enviroment.
 
 Deployment should work "out of the box" with this command sequence:
